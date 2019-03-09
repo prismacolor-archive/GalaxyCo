@@ -15,18 +15,17 @@ level_one_menu = ["river", "tree", "cornfield", "mountain", "gold", "bumblebees"
 
 def play_game():
     while True:
-        # print instructions for how to play the game
         print("Welcome to GalaxyCo, learn to budget while building your own planet!")
         ready = input("When you're ready to play, press y.")
         if ready.lower() != "y":
             print("Sorry, enter y to play!")
             continue
         else:
+            print("""Your starting budget is 500 booleans. 
+            You must purchase three items for your planet but don't go over budget!""")
+            item_count = 0
 
-            while playing:
-                item_count = 0
-                print("""Your current budget is 500 booleans. 
-                You must purchase three items for your planet but don't go over budget!""")
+            while item_count < 3:
                 print("Level 1 Menu:")
                 for i in level_one_menu:
                     print(i)
@@ -34,25 +33,26 @@ def play_game():
                 try:
                     item_purchased = input("What would you like to purchase?")
 
+                    if item_purchased == "":
+                        print("Please enter a valid response")
+                        continue
+                    # loop through menu one items
+                    # if item does not match any items raise error
+
                 except ValueError:
                     print("Please enter a valid response.")
                     continue
 
                 else:
-                    if item_purchased == "":
-                        print("Please enter a valid response")
-                        continue
-                    else:
-                        # loop through menu one items
-                        # if item does not match any items raise error
-                        # if it does match append to list
-                        # retrieve object and deduct cost from budget
-                        # cost of item should be deducted from budget: def purchase_item()
-                        print("You have added an " + item_purchased + " to your list.")
+                            # if it does match append to list
+                            # retrieve object and deduct cost from budget
+                            # cost of item should be deducted from budget: def purchase_item()
+                        print('You have added "' + item_purchased + '" to your list.')
                         item_count += 1
-                    # when item count == 3 break
-                    if item_count == 3:
-                        break
+                        continue
+                        # when item count == 3 break
+
+
 
             # determine if EE has won the game.
 
