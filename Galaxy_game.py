@@ -33,9 +33,9 @@ def play_game():
                 try:
                     item_purchased = input("What would you like to purchase?")
 
-                    if item_purchased == "":
-                        print("Please enter a valid response")
-                        continue
+                    if item_purchased not in level_one_menu:
+                            print("Please enter a valid response")
+                            continue
                     # loop through menu one items
                     # if item does not match any items raise error
 
