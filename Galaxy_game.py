@@ -1,14 +1,9 @@
-#import galaxy_func
-#import galaxy_items
-
-# welcome message with instructions
-# display the menu of things to choose from
-# person should enter name of thing they wish to buy
-# person should purchase three things
+from galaxy_func import *
+from galaxy_items import *
 
 playing = True
-budget = 500
 points = 0
+budget = 500
 item_list = []
 level_one_menu = ["river", "tree", "cornfield", "mountain", "gold", "bumblebees"]
 
@@ -33,28 +28,31 @@ def play_game():
                 try:
                     item_purchased = input("What would you like to purchase?")
 
+                    # if item is not in list, kick an error
                     if item_purchased not in level_one_menu:
                             print("Please enter a valid response")
                             continue
-                    # loop through menu one items
-                    # if item does not match any items raise error
 
                 except ValueError:
                     print("Please enter a valid response.")
                     continue
 
                 else:
-                            # if it does match append to list
-                            # retrieve object and deduct cost from budget
-                            # cost of item should be deducted from budget: def purchase_item()
-                        print('You have added "' + item_purchased + '" to your list.')
-                        item_count += 1
-                        continue
-                        # when item count == 3 break
+                    # adds item to list and one to item count
+                    print('You have added "' + item_purchased + '" to your list.')
+                    item_count += 1
+                    item_list.append(item_purchased)
 
-
+                    for item in galaxy_items_list:
+                        if item_purchased == item.name:
+                            purchase_item(budget, item)
+                    continue
 
             # determine if EE has won the game.
+            if budget < 0:
+                print("Oh dear, you are flat broke. Your budget is {]".format(budget))
+            else:
+                print("Great job! You made your purchases and have {} left to spare!".format(budget))
 
         gameover = input("Would you like to play again? Y or N").lower()
 
