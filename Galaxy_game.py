@@ -52,8 +52,10 @@ def play_game():
                 print("Oh dear, you are flat broke. Your budget is {}".format(budget))
             elif budget == 0:
                 print("Whew, just made it! Be careful on the next level!")
+                points = points + 100
             else:
                 print("Great job! You made your purchases and have {} left to spare!".format(budget))
+                points = points +250
 
         gameover = input("Would you like to play again? Y or N").lower()
 
