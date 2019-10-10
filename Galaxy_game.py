@@ -50,6 +50,8 @@ def play_game():
             # determine if EE has won the game.
             if budget < 0:
                 print("Oh dear, you are flat broke. Your budget is {}".format(budget))
+            elif budget == 0:
+                print("Whew, just made it! Be careful on the next level!")
             else:
                 print("Great job! You made your purchases and have {} left to spare!".format(budget))
 
